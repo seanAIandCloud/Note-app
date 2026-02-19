@@ -45,6 +45,19 @@ export class NoteService {
       attachments: [],
       createdAt: new Date(),
       updatedAt: new Date(),
+    },
+    {
+      id: '4',
+      userId: 'demoUser',
+      title: 'Call Of Duty',
+      content: 'Get Mastery Camo On Snipers',
+      tags: ['Call Of Duty', 'FPS'],
+      isPinned: true,
+      isArchived: false,
+      priority: 'done',
+      attachments: [],
+      createdAt: new Date(),
+      updatedAt: new Date(),
     }
   ];
 
@@ -61,8 +74,8 @@ export class NoteService {
 
   updateNote(updatedNote: Note): Observable<Note> {
     const index = this.notes.findIndex((n) => n.id === updatedNote.id);
-    if (index !== 1) {
-      this.notes[index] = updatedNote;
+    if (index !== -1) {
+      this.notes[index] = { ...updatedNote, updatedAt: new Date() };
     }
     return of(updatedNote);
   }
