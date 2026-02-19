@@ -12,18 +12,22 @@
   <!-- Notes area -->
   <div class="content">
     <aside class="sidebar">
-      <button mat-button>All Notes</button>
-      <button mat-button>Pinned</button>
-      <button mat-button>Archived</button>
+      <button mat-button (click)="applyFilter('all')">All Notes</button>
+      <button mat-button (click)="applyFilter('pinned')">Pinned</button>
+      <button mat-button (click)="applyFilter('archived')">Archived</button>
     </aside>
 
     <main class="notes-area">
       <!-- New Note button -->
-      <button mat-raised-button color="primary" (click)="openNewNoteForm()">
-        + New Note
-      </button>
+      <div class="new-note-wrapper">
+        <button mat-raised-button (click)="openNewNoteForm()">
+          + New Note
+        </button>
+      </div>
 
-      <h2>Your Notes</h2>
+      <div class="your-notes">
+        <h2>Your Notes</h2>
+      </div>
 
       <div *ngIf="notes.length === 0">
         <p>No notes yet.</p>
@@ -33,14 +37,61 @@
         <div
           class="note-card"
           *ngFor="let note of notes"
-          [ngClass]="note.priority">
+          [ngClass]="note.priority"
+        >
+          <mat-icon
+            *ngIf="note.isPinned"
+            class="pinned-icon"
+            aria-label="Pinned Note"
+            >push_pin</mat-icon
+          >
+          <mat-icon
+            *ngIf="note.isArchived"
+            class="archived-icon"
+            aria-label="Archived Note"
+            >archive</mat-icon
+          >
+
           <h3>{{ note.title }}</h3>
           <p>{{ note.content }}</p>
 
-          <!-- Delete Button -->
-          <button mat-mini-button color="warn" (click)="deleteNote(note.id)">
-            Delete
-          </button>
+          <div class="note-actions-bottom">
+            <button
+              mat-icon-button
+              (click)="togglePin(note)"
+              matTooltip="Pin/Unpin"
+            >
+              <mat-icon>{{
+                note.isPinned ? "push_pin" : "push_pin_outline"
+              }}</mat-icon>
+            </button>
+
+            <button
+              mat-icon-button
+              (click)="toggleArchive(note)"
+              matTooltip="Archive/Unarchive"
+            >
+              <mat-icon>{{
+                note.isArchived ? "unarchive" : "archive"
+              }}</mat-icon>
+            </button>
+
+            <button
+              mat-icon-button
+              (click)="editNote(note)"
+              matTooltip="Edit Note"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+
+            <button
+              mat-icon-button
+              (click)="deleteNote(note.id)"
+              matTooltip="Delete Note"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
         </div>
       </div>
     </main>
@@ -71,8 +122,8 @@
       </mat-form-field>
 
       <div class="modal-buttons">
-        <button mat-raised-button color="primary" (click)="addNote()">
-          Save
+        <button mat-raised-button color="primary" (click)="saveNote()">
+          {{ editingNote ? "Update" : "Save" }}
         </button>
         <button mat-button (click)="closeNewNoteForm()">Cancel</button>
       </div>
