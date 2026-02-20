@@ -1,1 +1,30 @@
-<p>profile works!</p>
+<div class="profile-container">
+  <h2>Profile</h2>
+
+  <div class="user-info">
+    <p><strong>Name:</strong> {{ user.name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+  </div>
+
+  <h3>Stats</h3>
+  <div class="stats">
+    <div class="stat-card">
+      <p class="stat-number">{{ notesCreated }}</p>
+      <p class="stat-label">Notes Created</p>
+    </div>
+
+    <div class="stat-card">
+      <p class="stat-number">{{ notesPinned }}</p>
+      <p class="stat-label">Notes Pinned</p>
+    </div>
+
+    <div class="stat-card">
+      <p class="stat-number">{{ notesArchived }}</p>
+      <p class="stat-label">Notes Archived</p>
+    </div>
+  </div>
+  <br>
+  <button mat-raised-button color="primary" routerLink="/dashboard">
+    Back to Dashboard
+  </button>
+</div>

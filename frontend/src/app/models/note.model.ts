@@ -1,24 +1,26 @@
 export interface Note {
-    id: string;
-    userId: string;
+  id: string;
+  userId: string;
 
-    title: string;
-    content: string;
+  title: string;
+  content: string;
 
-    tags: String[];
+  isPinned: boolean;
+  isArchived: boolean;
 
-    isPinned: boolean;
-    isArchived: boolean;
+  priority: 'urgent' | 'done' | 'normal';
 
-    priority: 'urgent' | 'done' | 'normal';
+  attachments: {
+    name: string;
+    type: string;
+    data: string;
+  }[];
 
-    attachments: Attachment[];
-
-    createdAt: Date;
-    updatedAt: Date;
+  createdAt: Date;
+  updatedAt: Date;
 }
 export interface Attachment {
-    fileUrl: string;
-    fileType: string;
-    uploadedAt: Date;
+  fileUrl: string;
+  fileType: string;
+  uploadedAt: Date;
 }

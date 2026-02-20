@@ -12,7 +12,6 @@ export class NoteService {
       userId: 'demoUser',
       title: 'Elden Ring Boss Strategy',
       content: 'Use bleed build and stay aggressive in phase two.',
-      tags: ['Elden Ring', 'RPG'],
       isPinned: true,
       isArchived: false,
       priority: 'urgent',
@@ -25,7 +24,6 @@ export class NoteService {
       userId: 'demoUser',
       title: 'Fallout 4 Settlement Tips',
       content: 'Maximize happiness by balancing defense and beds.',
-      tags: ['Fallout 4', 'RPG'],
       isPinned: false,
       isArchived: false,
       priority: 'normal',
@@ -38,7 +36,6 @@ export class NoteService {
       userId: 'demoUser',
       title: 'World of Warcraft',
       content: 'Kill all the Marmots',
-      tags: ['World of Warcraft', 'RPG'],
       isPinned: false,
       isArchived: false,
       priority: 'urgent',
@@ -51,14 +48,13 @@ export class NoteService {
       userId: 'demoUser',
       title: 'Call Of Duty',
       content: 'Get Mastery Camo On Snipers',
-      tags: ['Call Of Duty', 'FPS'],
       isPinned: true,
       isArchived: false,
       priority: 'done',
       attachments: [],
       createdAt: new Date(),
       updatedAt: new Date(),
-    }
+    },
   ];
 
   constructor() {}
@@ -68,8 +64,9 @@ export class NoteService {
   }
 
   addNotes(note: Note): Observable<Note> {
-    this.notes.push(note);
-    return of(note);
+    const newNote = { ...note, createdAt: new Date(), updatedAt: new Date() };
+    this.notes.push(newNote); 
+    return of(newNote);
   }
 
   updateNote(updatedNote: Note): Observable<Note> {

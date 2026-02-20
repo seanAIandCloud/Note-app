@@ -3,7 +3,17 @@
   <header class="navbar">
     <div class="logo">GameNotes</div>
 
+    <div class="nav-search">
+      <input
+        type="text"
+        placeholder="Search notes..."
+        [(ngModel)]="searchTerm"
+        (input)="applyFilter()"
+      />
+    </div>
+
     <div class="nav-actions">
+      <button mat-button routerLink="/Login">Logout</button>
       <button mat-button routerLink="/about">About</button>
       <button mat-button routerLink="/profile">Profile</button>
     </div>
@@ -54,6 +64,16 @@
 
           <h3>{{ note.title }}</h3>
           <p>{{ note.content }}</p>
+
+          <div class="attachments" *ngIf="note.attachments?.length">
+            <div
+              class="attachment"
+              *ngFor="let file of note.attachments"
+              (click)="downloadAttachment(file)"
+            >
+              📎 {{ file.name }}
+            </div>
+          </div>
 
           <div class="note-actions-bottom">
             <button
@@ -121,10 +141,18 @@
         </mat-select>
       </mat-form-field>
 
+      <input type="file" (change)="onFileSelected($event)" multiple />
+
       <div class="modal-buttons">
-        <button mat-raised-button color="primary" (click)="saveNote()">
+        <button
+          mat-raised-button
+          color="primary"
+          type="button"
+          (click)="saveNote()"
+        >
           {{ editingNote ? "Update" : "Save" }}
         </button>
+
         <button mat-button (click)="closeNewNoteForm()">Cancel</button>
       </div>
     </div>

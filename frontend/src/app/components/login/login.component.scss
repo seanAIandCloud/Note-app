@@ -1,0 +1,30 @@
+.auth-container {
+  max-width: 400px;
+  margin: 80px auto;
+  background-color: #2b2b3f;
+  padding: 2rem;
+  border-radius: 10px;
+  color: #f5f5f5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+  .auth-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+
+  .error-msg {
+    margin-top: 1rem;
+    color: #ff4d4f;
+    text-align: center;
+  }
+}

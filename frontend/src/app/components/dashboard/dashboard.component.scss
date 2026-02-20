@@ -15,8 +15,38 @@
   background-color: #1e1e2f;
   color: #fff;
 
+  .nav-search {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    input {
+      width: 350px;
+      max-width: 100%;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      border: 1px solid #2b2b3f;
+      background-color: #2b2b3f;
+      color: #f5f5f5;
+      font-family: inherit;
+      outline: none;
+      transition:
+        border 0.2s ease,
+        box-shadow 0.2s ease;
+
+      &::placeholder {
+        color: #aaa;
+      }
+
+      &:focus {
+        border-color: #4caf50;
+        box-shadow: 0 0 6px rgba(76, 175, 80, 0.4);
+      }
+    }
+  }
+
   .logo {
-    font-family: "Pip-Boy", monospace; 
+    font-family: "Pip-Boy", monospace;
     font-size: 1.5rem;
   }
 
@@ -57,24 +87,24 @@
 
     .new-note-wrapper {
       display: flex;
-      justify-content: center; 
-      margin-bottom: 1rem; 
+      justify-content: center;
+      margin-bottom: 1rem;
 
       button {
-        width: 500px; 
-        font-size: 1.1rem; 
-        background-color: #3a3a4f; 
+        width: 500px;
+        font-size: 1.1rem;
+        background-color: #3a3a4f;
         color: #f5f5f5;
 
         &:hover {
-          background-color: #2f2f3f; 
+          background-color: #2f2f3f;
         }
       }
     }
 
     .your-notes {
       display: flex;
-      justify-content: center; 
+      justify-content: center;
       margin-bottom: 1rem;
 
       h2 {
@@ -95,8 +125,8 @@
       color: #fff;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
       display: flex;
-      flex-direction: column; 
-      justify-content: space-between; 
+      flex-direction: column;
+      justify-content: space-between;
       position: relative;
       min-height: 200px;
 
@@ -114,10 +144,10 @@
         position: absolute;
         top: 8px;
         right: 8px;
-        color: #39ff88; 
-        font-size: 20px; 
-        background: transparent; 
-        border-radius: 50%; 
+        color: #39ff88;
+        font-size: 20px;
+        background: transparent;
+        border-radius: 50%;
         padding: 2px;
         display: flex;
         align-items: center;
@@ -127,8 +157,8 @@
       .archived-icon {
         position: absolute;
         top: 10px;
-        right: 30px; 
-        color: #ffe838; 
+        right: 30px;
+        color: #ffe838;
         font-size: 18px;
         background: transparent;
         border-radius: 50%;
@@ -138,31 +168,31 @@
       /* Bottom action buttons */
       .note-actions-bottom {
         display: flex;
-        flex-direction: row; 
+        flex-direction: row;
         justify-content: center;
-        gap: 0.4rem; 
-        margin-top: auto; 
+        gap: 0.4rem;
+        margin-top: auto;
         padding-top: 0.5rem;
         border-top: 1px solid #2b2b3f;
 
         button {
-          background-color: transparent !important; 
+          background-color: transparent !important;
           color: #f5f5f5;
           min-width: 0;
-          padding: 4px; 
+          padding: 4px;
           border-radius: 4px;
           transition:
             transform 0.15s ease,
             color 0.15s ease;
 
           &:hover {
-            color: #1890ff; 
+            color: #1890ff;
             background-color: rgba(255, 255, 255, 0.05);
             transform: scale(1.2);
           }
 
           mat-icon {
-            font-size: 18px; 
+            font-size: 18px;
           }
         }
       }
@@ -197,10 +227,45 @@
   border: 2px solid #1890ff;
   box-shadow: 0 0 15px rgba(22, 75, 125, 0.5);
 
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
   .full-width {
     width: 100%;
   }
+  
 
+  /* File input styling */
+  input[type="file"] {
+    background-color: #2b2b3f;
+    color: #f5f5f5;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #444;
+    font-family: inherit;
+  }
+
+  /* Attachments list */
+  .attachments {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .attachment {
+      font-size: 0.85rem;
+      color: #4caf50;
+      cursor: pointer;
+      transition: 0.2s ease;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  /* Buttons row */
   .modal-buttons {
     margin-top: 1rem;
     display: flex;
@@ -208,10 +273,13 @@
     gap: 0.5rem;
 
     button {
-      min-width: 80px;
+      min-width: 90px;
       font-weight: 500;
       border-radius: 6px;
-      text-transform: none; 
+      text-transform: none;
+      transition:
+        transform 0.15s ease,
+        background-color 0.2s ease;
 
       &:hover {
         transform: scale(1.05);
@@ -224,16 +292,17 @@
       color: #f5f5f5;
 
       &:hover {
-        background-color: #0f66d0; 
+        background-color: #0f66d0;
       }
     }
 
+    /* Cancel button */
     button:not([color="primary"]) {
-      background-color: #555; 
+      background-color: #555;
       color: #f5f5f5;
 
       &:hover {
-        background-color: #444; 
+        background-color: #444;
       }
     }
   }
