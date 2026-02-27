@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
   // ---------------------------
   getEmptyNote(): Note {
     return {
-      id: '',
+      id: Date.now().toString(),
       userId: 'demoUser',
       title: '',
       content: '',
@@ -98,13 +98,14 @@ export class DashboardComponent implements OnInit {
       });
     } else {
       // CREATE new note
-      noteToSave.id = Date.now().toString();
-      noteToSave.createdAt = new Date();
-      noteToSave.updatedAt = new Date();
-
-      this.noteService.addNotes(noteToSave).subscribe({
-        next: (note) => {
-          this.allNotes.push(note);
+      this.noteService.addNote(noteToSave).subscribe({
+        next: (savedNote: any) => {
+          // Map backend _id to frontend id
+          const noteWithId: Note = {
+            ...savedNote,
+            id: savedNote._id.toString(),
+          };
+          this.allNotes.push(noteWithId);
           this.applyFilter();
           this.resetForm();
           this.isSaving = false;
