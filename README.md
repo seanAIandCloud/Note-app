@@ -62,9 +62,9 @@ The main goal of this update was to allow notes to be created, displayed, edited
 
 The dashboard acts as the central workspace where all notes are managed, while the profile page provides basic statistics related to note usage.
 
-## 1.3.2 Features
+## Features
 
-### 1.3.2.1 Create Notes
+### Create Notes
 - Users can create new notes directly from the dashboard.
 - Each note includes:
   - Title
@@ -72,26 +72,26 @@ The dashboard acts as the central workspace where all notes are managed, while t
   - Created timestamp
 - Newly created notes immediately appear in the dashboard without needing a refresh.
 
-### 1.3.2.2 Read Notes
+### Read Notes
 - All stored notes are retrieved from the backend API.
 - Notes are displayed in a structured layout for easy viewing.
 - The dashboard automatically updates when data changes.
 
-### 1.3.2.3 Update Notes
+### Update Notes
 - Existing notes can be edited.
 - Updates modify the stored data and refresh the UI automatically.
 - Each edit updates the `updatedAt` timestamp.
 
-### 1.3.2.4 Delete Notes
+### Delete Notes
 - Notes can be permanently removed.
 - Deleted notes are immediately removed from both the UI and database.
 
-### 1.3.2.5 Pin and Archive System
+### Pin and Archive System
 - Notes can be pinned to keep important items at the top.
 - Archived notes are separated from active notes.
 - Filtering logic dynamically updates the displayed list.
 
-## 1.3.3 Profile Page
+## Profile Page
 The profile page provides simple statistics generated from stored notes:
 
 - Total number of notes
@@ -100,7 +100,7 @@ The profile page provides simple statistics generated from stored notes:
 
 These values are calculated dynamically when the page loads.
 
-## 1.3.4 Tech Stack
+## Tech Stack
 
 ### Frontend
 - Angular
@@ -115,7 +115,7 @@ These values are calculated dynamically when the page loads.
 ### Database
 - MongoDB using Mongoose schemas
 
-## 1.3.5 How to Use
+## How to Use
 
 ### Dashboard
 1. Open the dashboard page.
@@ -128,14 +128,14 @@ These values are calculated dynamically when the page loads.
 1. Navigate to the profile page.
 2. View automatically calculated note statistics.
 
-## 1.3.6 Implementation Notes
+## Implementation Notes
 - CRUD operations communicate with the backend through REST endpoints.
 - Notes are stored persistently in MongoDB.
 - State updates are handled using Angular subscriptions.
 - The dashboard refreshes automatically after create, update, or delete operations.
 - IDs are generated automatically by the database.
 
-## 1.3.7 Future Improvements
+## Future Improvements
 - Add advanced filtering and search functionality.
 - Implement drag-and-drop ordering for pinned notes.
 
